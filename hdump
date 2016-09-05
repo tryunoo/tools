@@ -1,0 +1,11 @@
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
+
+import sys
+import binascii
+
+if(len(sys.argv) != 2):
+    print "usage: %s file" % sys.argv[0]
+    exit()
+
+print ''.join(['\\x' + binascii.hexlify(x) for x in open(sys.argv[1]).read()])

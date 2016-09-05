@@ -1,0 +1,22 @@
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
+
+import argparse
+
+parser = argparse.ArgumentParser()
+parser.add_argument("string")
+parser.add_argument("-e", "--endian",
+        help="endian: little or big",
+        default="big")
+
+args = parser.parse_args()
+
+
+lis = [str(x.encode('hex')) for x in args.string]
+
+if args.endian == "little":
+    print "\\x" + "\\x".join(lis[::-1])
+    print "0x" + "".join(lis[::-1])
+else:
+    print "\\x" + "\\x".join(lis)
+    print "0x" + "".join(lis)
